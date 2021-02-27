@@ -3,8 +3,7 @@ import {Actions, createEffect, ofType} from '@ngrx/effects';
 import {ActionCreator} from '@ngrx/store';
 import {map} from 'rxjs/operators';
 import {addError} from '../actions/actions';
-
-export const ERROR_HANDLER_ACTIONS_TOKEN = new InjectionToken<ActionCreator[]>('ERROR_HANDLER_ACTIONS_TOKEN');
+import {ERROR_HANDLER_ACTIONS_TOKEN} from '../ngrx-error-handling.module';
 
 @Injectable()
 export class Effects {

@@ -1,0 +1,5 @@
+<ul>
+  <li *ngFor="let error of errors$ | async">{{error | json}}</li>
+</ul>
+
+<button (click)="requestUsername()">Click for error</button>
