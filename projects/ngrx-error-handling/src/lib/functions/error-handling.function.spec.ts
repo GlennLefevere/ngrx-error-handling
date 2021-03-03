@@ -1,6 +1,6 @@
 import {ActionCreator, createAction, props} from '@ngrx/store';
 import {of, throwError} from 'rxjs';
-import {handleResponse} from './error-handling.function';
+import {ErrorHandler} from './error-handling.function';
 import {addError} from '../actions/actions';
 
 describe('handleResponse', () => {
@@ -8,7 +8,7 @@ describe('handleResponse', () => {
 
   it('should map to succes', done => {
     of('test').pipe(
-      handleResponse(testSuccessAction)
+      ErrorHandler.handleResponse(testSuccessAction)
     ).subscribe((result) => {
       expect(result).toBeTruthy();
       const action = result as ActionCreator;
@@ -19,7 +19,7 @@ describe('handleResponse', () => {
 
   it('should map to add error action', done => {
     throwError('some error').pipe(
-      handleResponse(testSuccessAction),
+      ErrorHandler.handleResponse(testSuccessAction),
     ).subscribe(result => {
       expect(result).toBeTruthy();
       const action = result as ActionCreator;
@@ -32,7 +32,7 @@ describe('handleResponse', () => {
   it('should map to custom error action', done => {
     const testFailAction = createAction('bla', props<{error: any}>());
     throwError('some error').pipe(
-      handleResponse(testSuccessAction, testFailAction),
+      ErrorHandler.handleResponse(testSuccessAction, testFailAction),
     ).subscribe(result => {
       expect(result).toBeTruthy();
       const action = result as ActionCreator;

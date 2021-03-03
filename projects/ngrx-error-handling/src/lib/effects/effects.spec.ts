@@ -1,9 +1,9 @@
 import {TestBed} from '@angular/core/testing';
 import {ReplaySubject} from 'rxjs';
 import {Action, ActionCreator, createAction, props} from '@ngrx/store';
-import {Effects, ERROR_HANDLER_ACTIONS_TOKEN} from './effects';
+import {Effects} from './effects';
 import {provideMockActions} from '@ngrx/effects/testing';
-import {provideMockStore} from '@ngrx/store/testing';
+import {ERROR_HANDLER_ACTIONS_TOKEN} from '../ngrx-error-handling.module';
 
 describe('effects', () => {
   const testErrorAction = createAction('test', props<{error: any}>());
@@ -16,8 +16,7 @@ describe('effects', () => {
       providers: [
         Effects,
         provideMockActions(() => actions$),
-        provideMockStore(),
-        {provide: ERROR_HANDLER_ACTIONS_TOKEN, useValue: actions}
+        {provide: ERROR_HANDLER_ACTIONS_TOKEN, useValue: actions},
       ]
     });
 

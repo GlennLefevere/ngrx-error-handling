@@ -3,12 +3,11 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "outDir": "../../out-tsc/spec",
-    "types": [
-      "jasmine"
-    ]
+    "module": "commonjs",
+    "emitDecoratorMetadata": true,
+    "esModuleInterop": true
   },
   "files": [
-    "src/test.ts"
   ],
   "include": [
     "**/*.spec.ts",
