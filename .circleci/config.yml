@@ -6,10 +6,6 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Installing Yarn
-          command: |
-            npm install -g yarn
-      - run:
           name: Installing Dependencies
           command: |
             yarn install
